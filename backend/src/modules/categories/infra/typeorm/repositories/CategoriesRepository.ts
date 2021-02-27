@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
-import ICategoriesRepository from '';
-import ICreateCategoryDTO from '';
+import ICategoriesRepository from '../../../repositories/ICategoriesRepository';
+import ICreateCategoryDTO from '../../../dtos/ICreateCategoryDTO';
 
 import Category from '../entities/Category';
 
@@ -12,15 +12,12 @@ class CategoriesRepository implements ICategoriesRepository {
     this.ormRepository = getRepository(Category);
   }
 
-  public async findByDate(
-    date: Date,
-    provider_id: string,
-  ): Promise<Category | undefined> {
-    const findAppointment = await this.ormRepository.findOne({
-      where: { date, provider_id },
+  public async findByName(name: string): Promise<Category | undefined> {
+    const findCategory = await this.ormRepository.findOne({
+      where: { name },
     });
 
-    return findAppointment;
+    return findCategory;
   }
 
   public async create({
