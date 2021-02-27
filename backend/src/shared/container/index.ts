@@ -14,6 +14,6 @@ container.registerSingleton<IUsersRepository>(
 );
 
 container.registerSingleton<ICategoriesRepository>(
-  'UsersRepository',
+  'CategoriesRepository',
   CategoriesRepository,
 );
