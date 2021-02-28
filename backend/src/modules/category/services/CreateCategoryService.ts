@@ -13,12 +13,12 @@ interface IRequest {
 @injectable()
 class CreateCategoryService {
   constructor(
-    @inject('CategoriesRepository')
+    @inject('CategoryRepository')
     private categoryRepository: ICategoryRepository,
   ) {}
 
   public async execute({ name, availability }: IRequest): Promise<Category> {
-    const checkNameExists = await this.categoriesRepository.findByName(name);
+    const checkNameExists = await this.categoryRepository.findByName(name);
 
     if (checkNameExists) {
       throw new AppError('Name already used.');

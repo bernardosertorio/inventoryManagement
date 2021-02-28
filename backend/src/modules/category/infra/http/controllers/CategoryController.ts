@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 
 import CreateCategoryService from '../../../services/CreateCategoryService';
 
-export default class AppointmentController {
+export default class CategoryController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, availability } = request.body;
 

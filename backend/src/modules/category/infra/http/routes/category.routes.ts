@@ -1,17 +1,17 @@
 import { Router } from 'express';
 
-import CategoriesController from '../controllers/CategoriesController';
+import CategoryController from '../controllers/CategoryController';
 import GetCategoryController from '../controllers/getCategoryController';
 
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 
-const categoriesRouter = Router();
-const categoriesController = new CategoriesController();
+const categoryRouter = Router();
+const categoryController = new CategoryController();
 const getCategoryController = new GetCategoryController();
 
-categoriesRouter.use(ensureAuthenticated);
+categoryRouter.use(ensureAuthenticated);
 
-categoriesRouter.post('/', categoriesController.create);
-categoriesRouter.get('/getcategory', getCategoryController.index);
+categoryRouter.post('/', categoryController.create);
+categoryRouter.get('/getcategory', getCategoryController.index);
 
-export default categoriesRouter;
+export default categoryRouter;
