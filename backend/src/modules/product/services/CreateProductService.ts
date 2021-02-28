@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import IProductRepository from '../repositories/IProductRepository';
 
 import Product from '../infra/typeorm/entities/Product';
@@ -29,13 +29,13 @@ class CreateProductService {
     price,
     sku,
   }: IRequest): Promise<Product> {
-    const checkProductExists = await this.productRepository.findById(id);
+    const checkProductExists = await this.productRepository.getProductById(id);
 
     if (checkProductExists) {
       throw new AppError('Product already exists.');
     }
 
-    const product = await this.producRepository.create({
+    const product = await this.productRepository.createProduct({
       id,
       title,
       availability,
