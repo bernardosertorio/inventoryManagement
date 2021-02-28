@@ -12,13 +12,13 @@ class ProductRepository implements IProductRepository {
     this.ormRepository = getRepository(Product);
   }
 
-  public async findById(id: string): Promise<Product | undefined> {
+  public async getProductById(id: string): Promise<Product | undefined> {
     const product = await this.ormRepository.findOne(id);
 
     return product;
   }
 
-  public async create(userData: ICreateProductDTO): Promise<Product> {
+  public async createProduct(userData: ICreateProductDTO): Promise<Product> {
     const product = this.ormRepository.create(userData);
 
     await this.ormRepository.save(product);
@@ -26,14 +26,12 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async save(product: Product): Promise<Product> {
+  public async editProduct(product: Product): Promise<Product> {
     return this.ormRepository.save(product);
   }
 
-  public async delete(data: ICreateProductDTO): Promise<void> {
-    const deleteProduct = await this.ormRepository.delete({
-      where: {},
-    });
+  public async deleteProduct(data: ICreateProductDTO): Promise<void> {
+    await this.ormRepository.delete(data.id);
   }
 }
 
