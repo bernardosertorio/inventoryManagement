@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import AppError from '../../../shared/errors/AppError';
 
 import Category from '../infra/typeorm/entities/Category';
-import ICategoriesRepository from '../repositories/ICategoriesRepository';
+import ICategoryRepository from '../repositories/ICategoryRepository';
 
 interface IRequest {
   name: string;
@@ -14,7 +14,7 @@ interface IRequest {
 class CreateCategoryService {
   constructor(
     @inject('CategoriesRepository')
-    private categoriesRepository: ICategoriesRepository,
+    private categoryRepository: ICategoryRepository,
   ) {}
 
   public async execute({ name, availability }: IRequest): Promise<Category> {
@@ -24,7 +24,7 @@ class CreateCategoryService {
       throw new AppError('Name already used.');
     }
 
-    const category = await this.categoriesRepository.create({
+    const category = await this.categoryRepository.create({
       name,
       availability,
     });

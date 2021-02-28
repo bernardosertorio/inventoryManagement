@@ -1,11 +1,11 @@
 import { getRepository, Repository } from 'typeorm';
 
-import ICategoriesRepository from '../../../repositories/ICategoriesRepository';
+import ICategoryRepository from '../../../repositories/ICategoryRepository';
 import ICreateCategoryDTO from '../../../dtos/ICreateCategoryDTO';
 
 import Category from '../entities/Category';
 
-class CategoriesRepository implements ICategoriesRepository {
+class CategoryRepository implements ICategoryRepository {
   private ormRepository: Repository<Category>;
 
   constructor() {
@@ -35,4 +35,4 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 }
 
-export default CategoriesRepository;
+export default CategoryRepository;

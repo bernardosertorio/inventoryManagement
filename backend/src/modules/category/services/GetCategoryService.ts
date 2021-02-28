@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 import AppError from '../../../shared/errors/AppError';
 
 import Category from '../infra/typeorm/entities/Category';
-import ICategoriesRepository from '../repositories/ICategoriesRepository';
+import ICategoryRepository from '../repositories/ICategoryRepository';
 
 interface IRequest {
   name: string;
@@ -12,7 +12,7 @@ interface IRequest {
 class GetCategoryService {
   constructor(
     @inject('CategoryRepository')
-    private categoryRepository: ICategoriesRepository,
+    private categoryRepository: ICategoryRepository,
   ) {}
 
   public async execute({ name }: IRequest): Promise<Category> {
