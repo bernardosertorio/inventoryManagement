@@ -5,6 +5,7 @@ import ICreateProductDTO from '../../../dtos/ICreateProductDTO';
 import IFindAllProductsInCategory from '../../../dtos/IFindAllProductsInCategoryDTO';
 
 import Product from '../entities/Product';
+import IPutProductDTO from '../../../dtos/IPutProductDTO';
 
 class ProductRepository implements IProductRepository {
   private ormRepository: Repository<Product>;
@@ -33,16 +34,28 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async createProduct(userData: ICreateProductDTO): Promise<Product> {
-    const product = this.ormRepository.create(userData);
+  public async createProduct(productData: ICreateProductDTO): Promise<Product> {
+    const product = this.ormRepository.create(productData);
 
     await this.ormRepository.save(product);
 
     return product;
   }
 
-  public async editProduct(product: Product): Promise<Product> {
-    return this.ormRepository.save(product);
+  public async editProduct({
+    availability,
+    description,
+    price,
+    product_id,
+    title,
+  }: IPutProductDTO): Promise<Product> {
+    return this.ormRepository.save({
+      id: product_id,
+      availability,
+      description,
+      price,
+      title,
+    });
   }
 
   public async deleteProduct(data: ICreateProductDTO): Promise<void> {

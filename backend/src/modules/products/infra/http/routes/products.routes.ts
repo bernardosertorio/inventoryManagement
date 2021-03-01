@@ -32,6 +32,6 @@ productsRouter.get(
 
 productsRouter.post('/:category_id/product', productController.create);
 productsRouter.get('/product/:product_id', getProductController.index);
-productsRouter.put('/product/:product_id', putProductController.put);
+productsRouter.put('/product/edit/:product_id', putProductController.put);
 
 export default productsRouter;
