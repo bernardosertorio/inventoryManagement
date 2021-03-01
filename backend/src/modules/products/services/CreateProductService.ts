@@ -10,7 +10,7 @@ interface IRequest {
   title: string;
   availability: boolean;
   description: string;
-  price: number;
+  price: string;
   sku: string;
 }
 
