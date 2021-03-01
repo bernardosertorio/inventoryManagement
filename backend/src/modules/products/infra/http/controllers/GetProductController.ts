@@ -7,8 +7,6 @@ export default class getProductController {
   public async index(request: Request, response: Response): Promise<Response> {
     const { product_id } = request.params;
 
-    console.log(product_id, 'AQUI!!!');
-
     const getProduct = container.resolve(getProductsService);
 
     const productsInCategory = await getProduct.execute({
