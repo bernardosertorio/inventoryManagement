@@ -21,13 +21,6 @@ export default class CreateCategories1614553683479
           {
             name: 'availability',
             type: 'boolean',
-            default: 'true',
-          },
-          {
-            name: 'product_id',
-            type: 'varchar',
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
           },
           {
             name: 'created_at',
@@ -38,16 +31,6 @@ export default class CreateCategories1614553683479
             name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
-          },
-        ],
-        foreignKeys: [
-          {
-            name: 'CategoryProduct',
-            referencedTableName: 'products',
-            referencedColumnNames: ['id'],
-            columnNames: ['product_id'],
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE',
           },
         ],
       }),
