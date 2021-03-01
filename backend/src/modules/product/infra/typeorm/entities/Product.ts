@@ -4,7 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+
+import Category from '../../../../category/infra/typeorm/entities/Category';
 
 @Entity('products')
 class Product {
@@ -25,6 +29,13 @@ class Product {
 
   @Column()
   sku: string;
+
+  @Column()
+  category_id: string;
+
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;
