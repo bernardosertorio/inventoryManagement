@@ -6,7 +6,7 @@ import CreateProductService from '../../../services/CreateProductService';
 export default class ProductController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { category_id } = request.params;
-    const { title, availability, description, price, sku } = request.body;
+    const { title, availability, description, price } = request.body;
 
     const createProduct = container.resolve(CreateProductService);
 
@@ -16,7 +16,6 @@ export default class ProductController {
       availability,
       description,
       price,
-      sku,
     });
 
     return response.json(product);

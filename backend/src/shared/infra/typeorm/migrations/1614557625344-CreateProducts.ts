@@ -30,10 +30,6 @@ export default class CreateProducts1614557625344 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'sku',
-            type: 'varchar',
-          },
-          {
             name: 'category_id',
             type: 'varchar',
             generationStrategy: 'uuid',

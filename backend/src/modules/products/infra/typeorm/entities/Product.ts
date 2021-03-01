@@ -28,9 +28,6 @@ class Product {
   price: string;
 
   @Column()
-  sku: string;
-
-  @Column()
   category_id: string;
 
   @ManyToOne(() => Category)

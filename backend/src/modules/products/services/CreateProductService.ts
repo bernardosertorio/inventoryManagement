@@ -11,7 +11,6 @@ interface IRequest {
   availability: boolean;
   description: string;
   price: string;
-  sku: string;
 }
 
 @injectable()
@@ -27,7 +26,6 @@ class CreateProductService {
     availability,
     description,
     price,
-    sku,
   }: IRequest): Promise<Product> {
     const checkProductExists = await this.productRepository.getProductByTitle(
       title,
@@ -43,7 +41,6 @@ class CreateProductService {
       availability,
       description,
       price,
-      sku,
     });
 
     return product;

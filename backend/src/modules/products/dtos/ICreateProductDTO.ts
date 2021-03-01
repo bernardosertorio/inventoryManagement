@@ -4,5 +4,4 @@ export default interface ICreateProductDTO {
   availability: boolean;
   description: string;
   price: string;
-  sku: string;
 }
