@@ -18,6 +18,12 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
+  public async getProductByTitle(title: string): Promise<Product | undefined> {
+    const product = await this.ormRepository.findOne(title);
+
+    return product;
+  }
+
   public async createProduct(userData: ICreateProductDTO): Promise<Product> {
     const product = this.ormRepository.create(userData);
 

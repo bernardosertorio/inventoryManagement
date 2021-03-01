@@ -25,7 +25,7 @@ class Product {
   description: string;
 
   @Column()
-  price: number;
+  price: string;
 
   @Column()
   sku: string;

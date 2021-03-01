@@ -6,8 +6,7 @@ import IProductRepository from '../repositories/IProductRepository';
 import Product from '../infra/typeorm/entities/Product';
 
 interface IRequest {
-  category: string;
-  id: string;
+  category_id: string;
   title: string;
   availability: boolean;
   description: string;
@@ -23,23 +22,23 @@ class CreateProductService {
   ) {}
 
   public async execute({
-    category,
-    id,
+    category_id,
     title,
     availability,
     description,
     price,
     sku,
   }: IRequest): Promise<Product> {
-    const checkProductExists = await this.productRepository.getProductById(id);
+    const checkProductExists = await this.productRepository.getProductByTitle(
+      title,
+    );
 
     if (checkProductExists) {
       throw new AppError('Product already exists.');
     }
 
     const product = await this.productRepository.createProduct({
-      category,
-      id,
+      category_id,
       title,
       availability,
       description,

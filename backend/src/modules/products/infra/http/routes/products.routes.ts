@@ -23,6 +23,6 @@ productsRouter.get('/getcategory', getCategoryController.index);
 
 // Product Routes
 
-productsRouter.post('/category/product', productController.create);
+productsRouter.post('/:category_id/product', productController.create);
 
 export default productsRouter;

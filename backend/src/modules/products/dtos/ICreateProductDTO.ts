@@ -1,8 +1,8 @@
-export default interface IProductDTO {
-  id: string;
+export default interface ICreateProductDTO {
+  category_id: string;
   title: string;
   availability: boolean;
   description: string;
-  price: number;
+  price: string;
   sku: string;
 }

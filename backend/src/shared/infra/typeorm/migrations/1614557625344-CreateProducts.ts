@@ -34,7 +34,7 @@ export default class CreateProducts1614557625344 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'categoy_id',
+            name: 'category_id',
             type: 'varchar',
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
@@ -55,7 +55,7 @@ export default class CreateProducts1614557625344 implements MigrationInterface {
             name: 'CategoryProduct',
             referencedTableName: 'categories',
             referencedColumnNames: ['id'],
-            columnNames: ['categoy_id'],
+            columnNames: ['category_id'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
