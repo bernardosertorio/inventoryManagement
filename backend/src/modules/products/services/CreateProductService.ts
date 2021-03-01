@@ -6,6 +6,7 @@ import IProductRepository from '../repositories/IProductRepository';
 import Product from '../infra/typeorm/entities/Product';
 
 interface IRequest {
+  category: string;
   id: string;
   title: string;
   availability: boolean;
@@ -22,6 +23,7 @@ class CreateProductService {
   ) {}
 
   public async execute({
+    category,
     id,
     title,
     availability,
@@ -36,6 +38,7 @@ class CreateProductService {
     }
 
     const product = await this.productRepository.createProduct({
+      category,
       id,
       title,
       availability,
