@@ -29,6 +29,12 @@ class SkuRepository implements ISkuRepository {
     return sku;
   }
 
+  public async getSkuByTitle(title: string): Promise<Sku | undefined> {
+    const sku = await this.ormRepository.findOne(title);
+
+    return sku;
+  }
+
   public async createSku(skuData: ICreateSkuDTO): Promise<Sku> {
     const sku = this.ormRepository.create(skuData);
 
@@ -38,6 +44,7 @@ class SkuRepository implements ISkuRepository {
   }
 
   public async editSku({
+    title,
     sku_id,
     amount,
     sizes,
@@ -46,6 +53,7 @@ class SkuRepository implements ISkuRepository {
   }: IPutSkuDTO): Promise<Sku> {
     return this.ormRepository.save({
       id: sku_id,
+      title,
       amount,
       sizes,
       colors,

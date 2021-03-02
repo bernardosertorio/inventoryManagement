@@ -7,6 +7,7 @@ import IDeleteSkuDTO from '../dtos/IDeleteSkuDTO';
 export default interface ISkuRepository {
   createSku(data: ICreateSkuDTO): Promise<Sku>;
   findAllSkusInProduct(product_id: IFindAllSkusInProductDTO): Promise<Sku[]>;
+  getSkuByTitle(title: string): Promise<Sku | undefined>;
   getSkuById(sku_id: string): Promise<Sku | undefined>;
   editSku(data: IPutSkuDTO): Promise<Sku | undefined>;
   deleteSku(data: IDeleteSkuDTO): Promise<void>;

@@ -16,6 +16,9 @@ class Sku {
   id: string;
 
   @Column()
+  title: string;
+
+  @Column()
   amount: string;
 
   @Column()

@@ -14,6 +14,10 @@ export default class CreateSKUs1614695788629 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'title',
+            type: 'varchar',
+          },
+          {
             name: 'amount',
             type: 'varchar',
           },
