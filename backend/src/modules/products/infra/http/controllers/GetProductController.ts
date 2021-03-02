@@ -9,10 +9,10 @@ export default class getProductController {
 
     const getProduct = container.resolve(getProductsService);
 
-    const productsInCategory = await getProduct.execute({
+    const products = await getProduct.execute({
       product_id,
     });
 
-    return response.json(productsInCategory);
+    return response.json(products);
   }
 }
