@@ -6,6 +6,7 @@ import GetProductsInCategoryController from '../controllers/GetProductsInCategor
 import ProductController from '../controllers/ProductController';
 import GetProductController from '../controllers/GetProductController';
 import PutProductController from '../controllers/PutProductController';
+import DeleteProductController from '../controllers/DeleteProductController';
 
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 
@@ -17,6 +18,7 @@ const getProductsInCategoryController = new GetProductsInCategoryController();
 const productController = new ProductController();
 const getProductController = new GetProductController();
 const putProductController = new PutProductController();
+const deleteProductController = new DeleteProductController();
 
 productsRouter.use(ensureAuthenticated);
 
@@ -33,5 +35,9 @@ productsRouter.get(
 productsRouter.post('/:category_id/product', productController.create);
 productsRouter.get('/product/:product_id', getProductController.index);
 productsRouter.put('/product/edit/:product_id', putProductController.put);
+productsRouter.delete(
+  '/product/delete/:product_id',
+  deleteProductController.delete,
+);
 
 export default productsRouter;

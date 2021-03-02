@@ -3,6 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import IProductRepository from '../../../repositories/IProductRepository';
 import ICreateProductDTO from '../../../dtos/ICreateProductDTO';
 import IFindAllProductsInCategory from '../../../dtos/IFindAllProductsInCategoryDTO';
+import IDeleteProductDTO from '../../../dtos/IDeleteProductDTO';
 
 import Product from '../entities/Product';
 import IPutProductDTO from '../../../dtos/IPutProductDTO';
@@ -58,8 +59,8 @@ class ProductRepository implements IProductRepository {
     });
   }
 
-  public async deleteProduct(data: ICreateProductDTO): Promise<void> {
-    await this.ormRepository.delete(data);
+  public async deleteProduct({ product_id }: IDeleteProductDTO): Promise<void> {
+    await this.ormRepository.delete(product_id);
   }
 }
 

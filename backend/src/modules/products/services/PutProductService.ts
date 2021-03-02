@@ -33,8 +33,6 @@ class putProductService {
       price,
     });
 
-    console.log(product, 'Aqui!!!!!');
-
     return product;
   }
 }

@@ -2,6 +2,7 @@ import Product from '../infra/typeorm/entities/Product';
 import ICreateProductDTO from '../dtos/ICreateProductDTO';
 import IFindAllProductsInCategoryDTO from '../dtos/IFindAllProductsInCategoryDTO';
 import IPutProductDTO from '../dtos/IPutProductDTO';
+import IDeleteProductDTO from '../dtos/IDeleteProductDTO';
 
 export default interface IProductRepository {
   createProduct(data: ICreateProductDTO): Promise<Product>;
@@ -11,5 +12,5 @@ export default interface IProductRepository {
   getProductById(category_id: string): Promise<Product | undefined>;
   getProductByTitle(title: string): Promise<Product | undefined>;
   editProduct(data: IPutProductDTO): Promise<Product | undefined>;
-  deleteProduct(data: ICreateProductDTO): Promise<void>;
+  deleteProduct(data: IDeleteProductDTO): Promise<void>;
 }
