@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import putProductsService from '../../../services/PutProductService';
+import putProductService from '../../../services/PutProductService';
 
 export default class putProductController {
   public async put(request: Request, response: Response): Promise<Response> {
@@ -9,7 +9,7 @@ export default class putProductController {
 
     const { title, availability, description, price } = request.body;
 
-    const putProduct = container.resolve(putProductsService);
+    const putProduct = container.resolve(putProductService);
 
     const product = await putProduct.execute({
       product_id,

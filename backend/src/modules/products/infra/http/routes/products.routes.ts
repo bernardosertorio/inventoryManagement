@@ -3,6 +3,7 @@ import { Router } from 'express';
 import CategoryController from '../controllers/CategoryController';
 import GetCategoryController from '../controllers/GetCategoryController';
 import GetProductsInCategoryController from '../controllers/GetProductsInCategoryController';
+import PutCategoryController from '../controllers/PutCategoryController';
 
 import ProductController from '../controllers/ProductController';
 import GetProductController from '../controllers/GetProductController';
@@ -22,6 +23,7 @@ const productsRouter = Router();
 const categoryController = new CategoryController();
 const getCategoryController = new GetCategoryController();
 const getProductsInCategoryController = new GetProductsInCategoryController();
+const putCategoryController = new PutCategoryController();
 
 const productController = new ProductController();
 const getProductController = new GetProductController();
@@ -44,6 +46,7 @@ productsRouter.get(
   '/category/productsincategory/:category_id',
   getProductsInCategoryController.index,
 );
+productsRouter.put('/category/edit/:category_id', putCategoryController.put);
 
 // Product Routes
 

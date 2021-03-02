@@ -2,6 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 
 import ICategoryRepository from '../../../repositories/ICategoryRepository';
 import ICreateCategoryDTO from '../../../dtos/ICreateCategoryDTO';
+import IPutCategoryDTO from '../../../dtos/IPutCategoryDTO';
 
 import Category from '../entities/Category';
 
@@ -24,6 +25,16 @@ class CategoryRepository implements ICategoryRepository {
     const category = await this.ormRepository.findOne(id);
 
     return category;
+  }
+
+  public async editCategory({
+    name,
+    category_id,
+  }: IPutCategoryDTO): Promise<Category> {
+    return this.ormRepository.save({
+      id: category_id,
+      name,
+    });
   }
 
   public async create({
