@@ -7,7 +7,7 @@ interface IRequest {
 }
 
 @injectable()
-class putProductService {
+class deleteProductService {
   constructor(
     @inject('ProductRepository')
     private productRepository: IProductRepository,
@@ -20,4 +20,4 @@ class putProductService {
   }
 }
 
-export default putProductService;
+export default deleteProductService;
