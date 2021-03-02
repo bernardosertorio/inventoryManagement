@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import CategoryController from '../controllers/CategoryController';
+import GetCategoryController from '../controllers/GetCategoryController';
 import GetProductsInCategoryController from '../controllers/GetProductsInCategoryController';
 
 import ProductController from '../controllers/ProductController';
@@ -19,6 +20,7 @@ import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensure
 const productsRouter = Router();
 
 const categoryController = new CategoryController();
+const getCategoryController = new GetCategoryController();
 const getProductsInCategoryController = new GetProductsInCategoryController();
 
 const productController = new ProductController();
@@ -37,8 +39,9 @@ productsRouter.use(ensureAuthenticated);
 // Category Routes
 
 productsRouter.post('/category', categoryController.create);
+productsRouter.get('/category/:category_id', getCategoryController.index);
 productsRouter.get(
-  '/category/:category_id',
+  '/category/productsincategory/:category_id',
   getProductsInCategoryController.index,
 );
 
@@ -46,7 +49,10 @@ productsRouter.get(
 
 productsRouter.post('/:category_id/product', productController.create);
 productsRouter.get('/product/:product_id', getProductController.index);
-productsRouter.get('/product/:product_id', getSkusInProductController.index);
+productsRouter.get(
+  '/product/skusinproduct/:product_id',
+  getSkusInProductController.index,
+);
 productsRouter.put('/product/edit/:product_id', putProductController.put);
 productsRouter.delete(
   '/product/delete/:product_id',
