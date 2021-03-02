@@ -8,6 +8,8 @@ import GetProductController from '../controllers/GetProductController';
 import PutProductController from '../controllers/PutProductController';
 import DeleteProductController from '../controllers/DeleteProductController';
 
+import SkuController from '../controllers/SkuController';
+
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 
 const productsRouter = Router();
@@ -19,6 +21,8 @@ const productController = new ProductController();
 const getProductController = new GetProductController();
 const putProductController = new PutProductController();
 const deleteProductController = new DeleteProductController();
+
+const skuController = new SkuController();
 
 productsRouter.use(ensureAuthenticated);
 
@@ -39,5 +43,9 @@ productsRouter.delete(
   '/product/delete/:product_id',
   deleteProductController.delete,
 );
+
+// Sku Routes
+
+productsRouter.post('/:product_id/sku', skuController.create);
 
 export default productsRouter;

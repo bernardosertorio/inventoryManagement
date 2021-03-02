@@ -11,6 +11,9 @@ import CategoryRepository from '../../modules/products/infra/typeorm/repositorie
 import IProducRepository from '../../modules/products/repositories/IProductRepository';
 import ProductRepository from '../../modules/products/infra/typeorm/repositories/ProductRepository';
 
+import ISkuRepository from '../../modules/products/repositories/ISkuRepository';
+import SkuRepository from '../../modules/products/infra/typeorm/repositories/SkuRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -25,3 +28,5 @@ container.registerSingleton<IProducRepository>(
   'ProductRepository',
   ProductRepository,
 );
+
+container.registerSingleton<ISkuRepository>('SkuRepository', SkuRepository);
