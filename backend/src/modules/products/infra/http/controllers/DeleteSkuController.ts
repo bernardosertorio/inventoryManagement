@@ -10,7 +10,7 @@ export default class deleteSkuController {
     const deleteSku = container.resolve(deleteSkuService);
 
     const sku = await deleteSku.execute({
-      product_id,
+      sku_id,
     });
 
     return response.json(sku);
