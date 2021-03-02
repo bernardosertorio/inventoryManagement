@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import Category from '../infra/typeorm/entities/Product';
+import Category from '../infra/typeorm/entities/Category';
 import ICategoryRepository from '../repositories/ICategoryRepository';
 
 interface IRequest {
@@ -17,7 +17,7 @@ class GetCategoryService {
   public async execute({
     category_id,
   }: IRequest): Promise<Category | undefined> {
-    const category = await this.categoryRepository.getCategory(category_id);
+    const category = await this.categoryRepository.findById(category_id);
 
     return category;
   }
