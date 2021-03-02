@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import getSkusService from '../../../services/GetSkusService';
+import getSkuService from '../../../services/GetSkuService';
 
-export default class getSkusController {
+export default class getSkuController {
   public async index(request: Request, response: Response): Promise<Response> {
     const { sku_id } = request.params;
 
-    const getSkus = container.resolve(getSkusService);
+    const getSku = container.resolve(getSkuService);
 
-    const skus = await getSkus.execute({
+    const sku = await getSku.execute({
       sku_id,
     });
 
-    return response.json(skus);
+    return response.json(sku);
   }
 }

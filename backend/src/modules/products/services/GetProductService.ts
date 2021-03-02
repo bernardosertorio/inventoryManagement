@@ -15,11 +15,9 @@ class GetProductService {
   ) {}
 
   public async execute({ product_id }: IRequest): Promise<Product | undefined> {
-    const productsInCategory = await this.productRepository.getProductById(
-      product_id,
-    );
+    const product = await this.productRepository.getProductById(product_id);
 
-    return productsInCategory;
+    return product;
   }
 }
 
