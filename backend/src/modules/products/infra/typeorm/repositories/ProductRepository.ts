@@ -4,9 +4,9 @@ import IProductRepository from '../../../repositories/IProductRepository';
 import ICreateProductDTO from '../../../dtos/ICreateProductDTO';
 import IFindAllProductsInCategory from '../../../dtos/IFindAllProductsInCategoryDTO';
 import IDeleteProductDTO from '../../../dtos/IDeleteProductDTO';
+import IPutProductDTO from '../../../dtos/IPutProductDTO';
 
 import Product from '../entities/Product';
-import IPutProductDTO from '../../../dtos/IPutProductDTO';
 
 class ProductRepository implements IProductRepository {
   private ormRepository: Repository<Product>;

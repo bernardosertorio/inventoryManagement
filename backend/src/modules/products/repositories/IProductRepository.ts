@@ -9,7 +9,7 @@ export default interface IProductRepository {
   findAllProductsInCategory(
     category_id: IFindAllProductsInCategoryDTO,
   ): Promise<Product[]>;
-  getProductById(category_id: string): Promise<Product | undefined>;
+  getProductById(product_id: string): Promise<Product | undefined>;
   getProductByTitle(title: string): Promise<Product | undefined>;
   editProduct(data: IPutProductDTO): Promise<Product | undefined>;
   deleteProduct(data: IDeleteProductDTO): Promise<void>;
