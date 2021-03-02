@@ -11,7 +11,7 @@ export default class putProductController {
 
     const putProduct = container.resolve(putProductsService);
 
-    const productsInCategory = await putProduct.execute({
+    const product = await putProduct.execute({
       product_id,
       title,
       availability,
@@ -19,6 +19,6 @@ export default class putProductController {
       price,
     });
 
-    return response.json(productsInCategory);
+    return response.json(product);
   }
 }
