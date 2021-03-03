@@ -107,10 +107,10 @@ database(inventorymanagement)).
 
    - Put: (http://localhost:3333/products/category/edit/:category_id):
 
-        {
-	        "name": "short",
-	        "availability": true
-        }
+          {
+            "name": "short",
+            "availability": true
+          }
 
    - Delete: (http://localhost:3333/products/category/delete/:category_id)
 
@@ -126,7 +126,7 @@ database(inventorymanagement)).
 
 - [Product]: Dentro da pasta Product recomendo que você crie todas as rotas:
 
-  - Create: (http://localhost:3333/products/:category_id/product).
+  - Create: (http://localhost:3333/products/:category_id/product)
 
       {
         "title": "short azul",
