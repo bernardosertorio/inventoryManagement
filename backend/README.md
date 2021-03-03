@@ -9,7 +9,7 @@ Projeto desenvolvido como desafio para vaga de emprego
 
 ## 💻  Paradigma utilizado
 
-- [Orientado a Objeto]
+- Orientado a Objeto
 
 ---
 
@@ -64,13 +64,13 @@ database(inventorymanagement)).
 
 - Feito isso, você precisará rodar as migrations com o comando:
 
-$ yarn typeorm migration:run
+ yarn typeorm migration:run
 
 ---
 
 ## ⇣ Crie as rotas no Insomnia
 
-```bash
+
 # No Insomnia crie quatro pastas: Sessions, Category, Product e Sku
 
 - [Sessions]: Estará as rotas da criação do usuário e sua autenticação no sistema:
@@ -193,7 +193,6 @@ $ yarn typeorm migration:run
 
   Para executar as outras rotas do crud de sku, basta passar o id do sku criado. Isso, claro, se ele foi criado corretamente dentro de um produto.
 
-```
 
 ## ⇣ Pontos de melhorias iniciais
 
