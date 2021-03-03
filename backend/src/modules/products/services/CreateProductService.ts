@@ -31,20 +31,20 @@ class CreateProductService {
     description,
     price,
   }: IRequest): Promise<Product> {
-    const checkProductExists = await this.productRepository.getProductByTitle(
-      title,
-    );
-
-    if (checkProductExists) {
-      throw new AppError('Product already exists.');
-    }
-
     const checkCategoryExists = await this.categoryRepository.findCategoryById(
       category_id,
     );
 
     if (!checkCategoryExists) {
       throw new AppError('Category not found.');
+    }
+
+    const checkProductExists = await this.productRepository.getProductByTitle(
+      title,
+    );
+
+    if (checkProductExists) {
+      throw new AppError('Product already exists.');
     }
 
     const product = await this.productRepository.createProduct({

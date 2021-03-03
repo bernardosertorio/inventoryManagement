@@ -30,9 +30,9 @@ class SkuRepository implements ISkuRepository {
   }
 
   public async getSkuByTitle(title: string): Promise<Sku | undefined> {
-    const sku = await this.ormRepository.findOne(title);
+    const sku = await this.ormRepository.find({ title });
 
-    return sku;
+    return sku[0];
   }
 
   public async createSku(skuData: ICreateSkuDTO): Promise<Sku> {
