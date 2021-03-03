@@ -4,6 +4,7 @@ import AppError from '../../../shared/errors/AppError';
 import ISkuRepository from '../repositories/ISkuRepository';
 
 import Sku from '../infra/typeorm/entities/Sku';
+import IProductRepository from '../repositories/IProductRepository';
 
 interface IRequest {
   product_id: string;
@@ -19,6 +20,9 @@ class CreateSkuService {
   constructor(
     @inject('SkuRepository')
     private skuRepository: ISkuRepository,
+
+    @inject('ProductRepository')
+    private productRepository: IProductRepository,
   ) {}
 
   public async execute({
@@ -29,6 +33,14 @@ class CreateSkuService {
     materials,
     product_id,
   }: IRequest): Promise<Sku> {
+    const checkProducExists = await this.productRepository.getProductById(
+      product_id,
+    );
+
+    if (!checkProducExists) {
+      throw new AppError('Produc not found.');
+    }
+
     const checkSkuExists = await this.skuRepository.getSkuByTitle(title);
 
     if (checkSkuExists) {

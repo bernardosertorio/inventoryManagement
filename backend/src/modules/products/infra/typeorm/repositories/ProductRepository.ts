@@ -30,9 +30,9 @@ class ProductRepository implements IProductRepository {
   }
 
   public async getProductByTitle(title: string): Promise<Product | undefined> {
-    const product = await this.ormRepository.findOne(title);
+    const product = await this.ormRepository.find({ title });
 
-    return product;
+    return product[0];
   }
 
   public async createProduct(productData: ICreateProductDTO): Promise<Product> {
