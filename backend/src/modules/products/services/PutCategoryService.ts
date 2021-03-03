@@ -19,7 +19,7 @@ class putSkuService {
     category_id,
     name,
   }: IRequest): Promise<Category | undefined> {
-    const category = await this.categoryRepository.editCategory({
+    const category = await this.categoryRepository.putCategory({
       category_id,
       name,
     });

@@ -1,6 +1,5 @@
 import { injectable, inject } from 'tsyringe';
 
-import Category from '../infra/typeorm/entities/Category';
 import ICategoryRepository from '../repositories/ICategoryRepository';
 
 interface IRequest {
@@ -8,21 +7,17 @@ interface IRequest {
 }
 
 @injectable()
-class GetCategoryService {
+class deleteCategoryService {
   constructor(
     @inject('CategoryRepository')
     private categoryRepository: ICategoryRepository,
   ) {}
 
-  public async execute({
-    category_id,
-  }: IRequest): Promise<Category | undefined> {
-    const category = await this.categoryRepository.findCategoryById(
-      category_id,
-    );
+  public async execute({ category_id }: IRequest): Promise<void> {
+    const category = await this.categoryRepository.deleteCategory(category_id);
 
     return category;
   }
 }
 
-export default GetCategoryService;
+export default deleteCategoryService;

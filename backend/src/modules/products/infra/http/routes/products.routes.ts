@@ -4,6 +4,7 @@ import CategoryController from '../controllers/CategoryController';
 import GetCategoryController from '../controllers/GetCategoryController';
 import GetProductsInCategoryController from '../controllers/GetProductsInCategoryController';
 import PutCategoryController from '../controllers/PutCategoryController';
+import DeleteCategoryController from '../controllers/DeleteCategoryController';
 
 import ProductController from '../controllers/ProductController';
 import GetProductController from '../controllers/GetProductController';
@@ -24,6 +25,7 @@ const categoryController = new CategoryController();
 const getCategoryController = new GetCategoryController();
 const getProductsInCategoryController = new GetProductsInCategoryController();
 const putCategoryController = new PutCategoryController();
+const deleteCategoryController = new DeleteCategoryController();
 
 const productController = new ProductController();
 const getProductController = new GetProductController();
@@ -47,6 +49,10 @@ productsRouter.get(
   getProductsInCategoryController.index,
 );
 productsRouter.put('/category/edit/:category_id', putCategoryController.put);
+productsRouter.delete(
+  '/category/delete/:category_id',
+  deleteCategoryController.delete,
+);
 
 // Product Routes
 
