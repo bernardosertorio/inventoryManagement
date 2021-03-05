@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import putCategoryService from '../../../services/PutCategoryService';
+import putCategoryService from '../../../../services/Category/PutCategoryService';
 
 export default class putCategoryController {
   public async put(request: Request, response: Response): Promise<Response> {

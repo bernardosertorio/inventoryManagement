@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import getProductsService from '../../../services/GetProductService';
+import getProductsService from '../../../../services/Product/GetProductService';
 
 export default class getProductController {
   public async index(request: Request, response: Response): Promise<Response> {

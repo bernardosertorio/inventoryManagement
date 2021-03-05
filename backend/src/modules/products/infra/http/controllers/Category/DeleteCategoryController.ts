@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import deleteCategoryService from '../../../../services/DeleteCategoryService';
+import deleteCategoryService from '../../../../services/Category/DeleteCategoryService';
 
 export default class deleteCategoryController {
   public async delete(request: Request, response: Response): Promise<Response> {

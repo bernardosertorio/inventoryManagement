@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import getSkusInProductService from '../../../services/GetSkusInProductService';
+import getSkusInProductService from '../../../../services/Product/GetSkusInProductService';
 
 export default class getSkusInProductController {
   public async index(request: Request, response: Response): Promise<Response> {

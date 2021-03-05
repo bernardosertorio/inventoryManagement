@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import putSkuService from '../../../services/PutSkuService';
+import putSkuService from '../../../../services/Sku/PutSkuService';
 
 export default class putSkuController {
   public async put(request: Request, response: Response): Promise<Response> {

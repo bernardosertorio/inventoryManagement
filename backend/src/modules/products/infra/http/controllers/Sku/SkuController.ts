@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateSkuService from '../../../services/CreateSkuService';
+import CreateSkuService from '../../../../services/Sku/CreateSkuService';
 
 export default class SkuController {
   public async create(request: Request, response: Response): Promise<Response> {

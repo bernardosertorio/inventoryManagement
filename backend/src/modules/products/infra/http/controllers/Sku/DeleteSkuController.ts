@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import deleteSkuService from '../../../services/DeleteSkuService';
+import deleteSkuService from '../../../../services/Sku/DeleteSkuService';
 
 export default class deleteSkuController {
   public async delete(request: Request, response: Response): Promise<Response> {
