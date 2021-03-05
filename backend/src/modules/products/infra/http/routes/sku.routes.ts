@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import SkuController from '../../controllers/Sku/SkuController';
-import GetSkuController from '../../controllers/Sku/GetSkuController';
-import PutSkuController from '../../controllers/Sku/PutSkuController';
-import DeleteSkuController from '../../controllers/Sku/DeleteSkuController';
+import SkuController from '../controllers/Sku/SkuController';
+import GetSkuController from '../controllers/Sku/GetSkuController';
+import PutSkuController from '../controllers/Sku/PutSkuController';
+import DeleteSkuController from '../controllers/Sku/DeleteSkuController';
 
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 

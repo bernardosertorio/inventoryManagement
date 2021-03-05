@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import CategoryController from '../../controllers/Category/CategoryController';
-import GetCategoryController from '../../controllers/Category/GetCategoryController';
-import GetProductsInCategoryController from '../../controllers/Category/GetProductsInCategoryController';
-import PutCategoryController from '../../controllers/Category/PutCategoryController';
-import DeleteCategoryController from '../../controllers/Category/DeleteCategoryController';
+import CategoryController from '../controllers/Category/CategoryController';
+import GetCategoryController from '../controllers/Category/GetCategoryController';
+import GetProductsInCategoryController from '../controllers/Category/GetProductsInCategoryController';
+import PutCategoryController from '../controllers/Category/PutCategoryController';
+import DeleteCategoryController from '../controllers/Category/DeleteCategoryController';
 
-import ensureAuthenticated from '../../../../../users/infra/http/middlewares/ensureAuthenticated';
+import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 
 const categoryRouter = Router();
 

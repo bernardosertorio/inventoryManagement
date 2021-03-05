@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import ProductController from '../../controllers/Product/ProductController';
-import GetProductController from '../../controllers/Product/GetProductController';
-import GetSkusInProductController from '../../controllers/Product/GetSkusInProductController';
-import PutProductController from '../../controllers/Product/PutProductController';
-import DeleteProductController from '../../controllers/Product/DeleteProductController';
+import ProductController from '../controllers/Product/ProductController';
+import GetProductController from '../controllers/Product/GetProductController';
+import GetSkusInProductController from '../controllers/Product/GetSkusInProductController';
+import PutProductController from '../controllers/Product/PutProductController';
+import DeleteProductController from '../controllers/Product/DeleteProductController';
 
-import ensureAuthenticated from '../../../../../users/infra/http/middlewares/ensureAuthenticated';
+import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
 
 const productRouter = Router();
 
