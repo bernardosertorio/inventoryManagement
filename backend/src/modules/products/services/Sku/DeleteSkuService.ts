@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import ISkuRepository from '../repositories/ISkuRepository';
+import ISkuRepository from '../../repositories/ISkuRepository';
 
 interface IRequest {
   sku_id: string;

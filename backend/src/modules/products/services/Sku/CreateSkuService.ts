@@ -1,10 +1,10 @@
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '../../../shared/errors/AppError';
-import ISkuRepository from '../repositories/ISkuRepository';
+import AppError from '../../../../shared/errors/AppError';
+import ISkuRepository from '../../repositories/ISkuRepository';
+import IProductRepository from '../../repositories/IProductRepository';
 
-import Sku from '../infra/typeorm/entities/Sku';
-import IProductRepository from '../repositories/IProductRepository';
+import Sku from '../../infra/typeorm/entities/Sku';
 
 interface IRequest {
   product_id: string;

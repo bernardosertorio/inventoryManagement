@@ -1,10 +1,10 @@
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '../../../shared/errors/AppError';
-import IProductRepository from '../repositories/IProductRepository';
+import AppError from '../../../../shared/errors/AppError';
+import IProductRepository from '../../repositories/IProductRepository';
+import ICategoryRepository from '../../repositories/ICategoryRepository';
 
-import Product from '../infra/typeorm/entities/Product';
-import ICategoryRepository from '../repositories/ICategoryRepository';
+import Product from '../../infra/typeorm/entities/Product';
 
 interface IRequest {
   category_id: string;

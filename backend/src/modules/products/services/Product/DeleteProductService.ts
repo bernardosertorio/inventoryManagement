@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import IProductRepository from '../repositories/IProductRepository';
+import IProductRepository from '../../repositories/IProductRepository';
 
 interface IRequest {
   product_id: string;

@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import ICategoryRepository from '../repositories/ICategoryRepository';
+import ICategoryRepository from '../../repositories/ICategoryRepository';
 
 interface IRequest {
   category_id: string;

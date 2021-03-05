@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
-import Sku from '../infra/typeorm/entities/Sku';
-import ISkuRepository from '../repositories/ISkuRepository';
+import Sku from '../../infra/typeorm/entities/Sku';
+import ISkuRepository from '../../repositories/ISkuRepository';
 
 interface IRequest {
   title: string;
