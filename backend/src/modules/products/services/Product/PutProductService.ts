@@ -8,7 +8,7 @@ interface IRequest {
   title: string;
   availability: boolean;
   description: string;
-  price: string;
+  price: number;
 }
 
 @injectable()

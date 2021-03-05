@@ -1,10 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
 
+import IFindAllSkusInProductDTO from '../../../dtos/Sku/IFindAllSkusInProductDTO';
 import ISkuRepository from '../../../repositories/ISkuRepository';
-import ICreateSkuDTO from '../../../dtos/ICreateSkuDTO';
-import IFindAllSkusInProduct from '../../../dtos/IFindAllSkusInProductDTO';
-import IDeleteSkuDTO from '../../../dtos/IDeleteSkuDTO';
-import IPutSkuDTO from '../../../dtos/IPutSkuDTO';
+import ICreateSkuDTO from '../../../dtos/Sku/ICreateSkuDTO';
+import IDeleteSkuDTO from '../../../dtos/Sku/IDeleteSkuDTO';
+import IPutSkuDTO from '../../../dtos/Sku/IPutSkuDTO';
 
 import Sku from '../entities/Sku';
 
@@ -13,14 +13,6 @@ class SkuRepository implements ISkuRepository {
 
   constructor() {
     this.ormRepository = getRepository(Sku);
-  }
-
-  public async findAllSkusInProduct({
-    product_id,
-  }: IFindAllSkusInProduct): Promise<Sku[]> {
-    const sku = await this.ormRepository.find({ product_id });
-
-    return sku;
   }
 
   public async getSkuById(id: string): Promise<Sku | undefined> {
@@ -35,6 +27,14 @@ class SkuRepository implements ISkuRepository {
     return findSku;
   }
 
+  public async findAllSkusInProduct({
+    product_id,
+  }: IFindAllSkusInProductDTO): Promise<Sku[]> {
+    const skus = await this.ormRepository.find({ product_id });
+
+    return skus;
+  }
+
   public async createSku(skuData: ICreateSkuDTO): Promise<Sku> {
     const sku = this.ormRepository.create(skuData);
 
@@ -47,7 +47,10 @@ class SkuRepository implements ISkuRepository {
     title,
     sku_id,
     amount,
-    sizes,
+    size_P,
+    size_M,
+    size_G,
+    size_GG,
     colors,
     materials,
   }: IPutSkuDTO): Promise<Sku> {
@@ -55,7 +58,10 @@ class SkuRepository implements ISkuRepository {
       id: sku_id,
       title,
       amount,
-      sizes,
+      size_P,
+      size_M,
+      size_G,
+      size_GG,
       colors,
       materials,
     });

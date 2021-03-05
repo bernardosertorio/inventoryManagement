@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
 
 import ICategoryRepository from '../../../repositories/ICategoryRepository';
-import ICreateCategoryDTO from '../../../dtos/ICreateCategoryDTO';
-import IPutCategoryDTO from '../../../dtos/IPutCategoryDTO';
+import ICreateCategoryDTO from '../../../dtos/Category/ICreateCategoryDTO';
+import IPutCategoryDTO from '../../../dtos/Category/IPutCategoryDTO';
 
 import Category from '../entities/Category';
 

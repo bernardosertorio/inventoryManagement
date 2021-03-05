@@ -1,7 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 
+import IProductRepository from '../../repositories/IProductRepository';
+
 import Sku from '../../infra/typeorm/entities/Sku';
-import ISkuRepository from '../../repositories/ISkuRepository';
 
 interface IRequest {
   product_id: string;
@@ -10,12 +11,12 @@ interface IRequest {
 @injectable()
 class GetSkusInProductService {
   constructor(
-    @inject('SkuRepository')
-    private skuRepository: ISkuRepository,
+    @inject('ProductRepository')
+    private productRepository: IProductRepository,
   ) {}
 
   public async execute({ product_id }: IRequest): Promise<Sku[]> {
-    const skusInCategory = await this.skuRepository.findAllSkusInProduct({
+    const skusInCategory = await this.productRepository.findAllSkusInProduct({
       product_id,
     });
 
