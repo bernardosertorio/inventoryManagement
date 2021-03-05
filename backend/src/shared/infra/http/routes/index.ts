@@ -11,7 +11,7 @@ const routes = Router();
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/categories', categoryRouter);
-routes.use('/product', productRouter);
-routes.use('/sku', skuRouter);
+routes.use('/products', productRouter);
+routes.use('/skus', skuRouter);
 
 export default routes;

@@ -18,11 +18,20 @@ class Sku {
   @Column()
   title: string;
 
-  @Column()
-  amount: string;
+  @Column('integer')
+  amount: number;
 
-  @Column()
-  sizes: string;
+  @Column('integer')
+  size_P: number;
+
+  @Column('integer')
+  size_M: number;
+
+  @Column('integer')
+  size_G: number;
+
+  @Column('integer')
+  size_GG: number;
 
   @Column()
   colors: string;

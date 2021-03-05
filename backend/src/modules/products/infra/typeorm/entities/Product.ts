@@ -18,14 +18,14 @@ class Product {
   @Column()
   title: string;
 
-  @Column()
+  @Column('boolean')
   availability: boolean;
 
   @Column()
   description: string;
 
-  @Column()
-  price: string;
+  @Column('decimal', { precision: 12, scale: 2 })
+  price: number;
 
   @Column()
   category_id: string;
