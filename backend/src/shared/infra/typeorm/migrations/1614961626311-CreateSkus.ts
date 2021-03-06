@@ -38,7 +38,7 @@ export default class CreateSkus1614961626311 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'colors',
+            name: 'color',
             type: 'varchar',
           },
           {

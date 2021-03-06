@@ -9,9 +9,12 @@ import Sku from '../../infra/typeorm/entities/Sku';
 interface IRequest {
   product_id: string;
   title: string;
-  amount: string;
-  sizes: string;
-  colors: string;
+  amount: number;
+  size_P: number;
+  size_M: number;
+  size_G: number;
+  size_GG: number;
+  color: string;
   materials: string;
 }
 
@@ -28,8 +31,11 @@ class CreateSkuService {
   public async execute({
     title,
     amount,
-    sizes,
-    colors,
+    size_P,
+    size_M,
+    size_G,
+    size_GG,
+    color,
     materials,
     product_id,
   }: IRequest): Promise<Sku> {
@@ -51,8 +57,11 @@ class CreateSkuService {
       product_id,
       title,
       amount,
-      sizes,
-      colors,
+      size_P,
+      size_M,
+      size_G,
+      size_GG,
+      color,
       materials,
     });
 

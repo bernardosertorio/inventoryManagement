@@ -1,7 +1,7 @@
-import ICreateSkuDTO from '../dtos/ICreateSkuDTO';
-import IPutSkuDTO from '../dtos/IPutSkuDTO';
+import ICreateSkuDTO from '../dtos/Sku/ICreateSkuDTO';
+import IPutSkuDTO from '../dtos/Sku/IPutSkuDTO';
 import IFindAllSkusInProductDTO from '../dtos/Sku/IFindAllSkusInProductDTO';
-import IDeleteSkuDTO from '../dtos/IDeleteSkuDTO';
+import IDeleteSkuDTO from '../dtos/Sku/IDeleteSkuDTO';
 
 import Sku from '../infra/typeorm/entities/Sku';
 

@@ -6,6 +6,6 @@ export default interface ICreateSkuDTO {
   size_M: number;
   size_G: number;
   size_GG: number;
-  colors: string;
+  color: string;
   materials: string;
 }

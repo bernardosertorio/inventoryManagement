@@ -1,5 +1,4 @@
 export default interface IPutSkuDTO {
-  product_id: string;
   sku_id: string;
   title: string;
   amount: number;
@@ -7,6 +6,6 @@ export default interface IPutSkuDTO {
   size_M: number;
   size_G: number;
   size_GG: number;
-  colors: string;
+  color: string;
   materials: string;
 }

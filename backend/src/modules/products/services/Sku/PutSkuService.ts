@@ -4,11 +4,14 @@ import Sku from '../../infra/typeorm/entities/Sku';
 import ISkuRepository from '../../repositories/ISkuRepository';
 
 interface IRequest {
-  title: string;
   sku_id: string;
-  amount: string;
-  sizes: string;
-  colors: string;
+  title: string;
+  amount: number;
+  size_P: number;
+  size_M: number;
+  size_G: number;
+  size_GG: number;
+  color: string;
   materials: string;
 }
 
@@ -23,16 +26,22 @@ class putSkuService {
     sku_id,
     title,
     amount,
-    sizes,
-    colors,
+    size_P,
+    size_M,
+    size_G,
+    size_GG,
+    color,
     materials,
   }: IRequest): Promise<Sku | undefined> {
     const sku = await this.skuRepository.editSku({
       sku_id,
       title,
       amount,
-      sizes,
-      colors,
+      size_P,
+      size_M,
+      size_G,
+      size_GG,
+      color,
       materials,
     });
 

@@ -44,14 +44,14 @@ class SkuRepository implements ISkuRepository {
   }
 
   public async editSku({
-    title,
     sku_id,
+    title,
     amount,
     size_P,
     size_M,
     size_G,
     size_GG,
-    colors,
+    color,
     materials,
   }: IPutSkuDTO): Promise<Sku> {
     return this.ormRepository.save({
@@ -62,7 +62,7 @@ class SkuRepository implements ISkuRepository {
       size_M,
       size_G,
       size_GG,
-      colors,
+      color,
       materials,
     });
   }

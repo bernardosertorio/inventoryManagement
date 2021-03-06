@@ -7,16 +7,28 @@ export default class putSkuController {
   public async put(request: Request, response: Response): Promise<Response> {
     const { sku_id } = request.params;
 
-    const { title, amount, sizes, colors, materials } = request.body;
+    const {
+      title,
+      amount,
+      size_P,
+      size_M,
+      size_G,
+      size_GG,
+      color,
+      materials,
+    } = request.body;
 
     const putSku = container.resolve(putSkuService);
 
     const sku = await putSku.execute({
-      title,
       sku_id,
+      title,
       amount,
-      sizes,
-      colors,
+      size_P,
+      size_M,
+      size_G,
+      size_GG,
+      color,
       materials,
     });
 

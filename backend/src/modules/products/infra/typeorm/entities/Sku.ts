@@ -34,7 +34,7 @@ class Sku {
   size_GG: number;
 
   @Column()
-  colors: string;
+  color: string;
 
   @Column()
   materials: string;

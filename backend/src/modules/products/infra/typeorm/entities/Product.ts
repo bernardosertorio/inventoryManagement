@@ -24,7 +24,7 @@ class Product {
   @Column()
   description: string;
 
-  @Column('decimal', { precision: 12, scale: 2 })
+  @Column('numeric', { precision: 9, scale: 2 })
   price: number;
 
   @Column()
