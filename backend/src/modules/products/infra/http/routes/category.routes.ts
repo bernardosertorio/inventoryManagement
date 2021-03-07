@@ -1,27 +1,20 @@
 import { Router } from 'express';
 
-import CategoryController from '../controllers/Category/CategoryController';
-import GetCategoryController from '../controllers/Category/GetCategoryController';
-import PutCategoryController from '../controllers/Category/PutCategoryController';
-import DeleteCategoryController from '../controllers/Category/DeleteCategoryController';
-
 import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
-
-const categoryRouter = Router();
+import CategoryController from '../controllers/CategoryController';
 
 const categoryController = new CategoryController();
-const getCategoryController = new GetCategoryController();
-const putCategoryController = new PutCategoryController();
-const deleteCategoryController = new DeleteCategoryController();
 
-categoryRouter.use(ensureAuthenticated);
+const categoryRoutes = Router();
 
-categoryRouter.post('/category', categoryController.create);
-categoryRouter.get('/category/:category_id', getCategoryController.index);
-categoryRouter.put('/category/edit/:category_id', putCategoryController.put);
-categoryRouter.delete(
-  '/category/delete/:category_id',
-  deleteCategoryController.delete,
-);
+categoryRoutes.use(ensureAuthenticated);
 
-export default categoryRouter;
+categoryRoutes.post('/', categoryController.create);
+
+categoryRoutes.get('/', categoryController.index);
+
+categoryRoutes.put('/:code', categoryController.update);
+
+categoryRoutes.delete('/:code', categoryController.delete);
+
+export default categoryRoutes;
