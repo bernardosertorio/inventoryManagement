@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import AppError from '../../../../shared/errors/AppError';
 
 import Sku from '../../infra/typeorm/entities/Sku';
 import ISkuRepository from '../../repositories/ISkuRepository';
@@ -33,6 +34,11 @@ class putSkuService {
     color,
     materials,
   }: IRequest): Promise<Sku | undefined> {
+    const checkSkuIdExists = await this.skuRepository.getSkuById(sku_id);
+
+    if (!checkSkuIdExists) {
+      throw new AppError('Sku not found');
+    }
     const sku = await this.skuRepository.editSku({
       sku_id,
       title,
