@@ -1,23 +1,29 @@
 import { injectable, inject } from 'tsyringe';
 
-import IProductRepository from '../../repositories/IProductRepository';
+import AppError from '../../../../shared/errors/AppError';
 
-interface IRequest {
-  product_id: string;
-}
+import IProductsRepository from '../../repositories/IProductRepository';
 
 @injectable()
-class deleteProductService {
+class DeleteProductService {
   constructor(
-    @inject('ProductRepository')
-    private productRepository: IProductRepository,
+    @inject('ProductsRepository')
+    private productsRepository: IProductsRepository,
   ) {}
 
-  public async execute({ product_id }: IRequest): Promise<void> {
-    const product = await this.productRepository.deleteProduct({ product_id });
+  public async execute(sku: string): Promise<void> {
+    if (sku.length !== 19) {
+      throw new AppError('The sku be have a nineteen chars');
+    }
 
-    return product;
+    const checkSkuExists = await this.productsRepository.findBySku(sku);
+
+    if (!checkSkuExists) {
+      throw new AppError('This product sku not exists');
+    }
+
+    await this.productsRepository.delete(sku);
   }
 }
 
-export default deleteProductService;
+export default DeleteProductService;
