@@ -1,4 +1,4 @@
 export default interface ICreateCategoryDTO {
-  name: string;
-  availability: boolean;
+  code: string;
+  description: string;
 }
