@@ -1,40 +1,53 @@
 import { injectable, inject } from 'tsyringe';
+
 import AppError from '../../../../shared/errors/AppError';
 
 import Category from '../../infra/typeorm/entities/Category';
 import ICategoryRepository from '../../repositories/ICategoryRepository';
-
-interface IRequest {
-  name: string;
-  category_id: string;
-}
+import ICreateCategoryDTO from '../../dtos/ICreateCategoryDTO';
 
 @injectable()
-class putSkuService {
+class UpdateCategoryService {
   constructor(
     @inject('CategoryRepository')
     private categoryRepository: ICategoryRepository,
   ) {}
 
   public async execute({
-    category_id,
-    name,
-  }: IRequest): Promise<Category | undefined> {
-    const checkNameExist = await this.categoryRepository.findCategoryByName(
-      name,
-    );
-
-    if (checkNameExist) {
-      throw new AppError('name already exists');
+    code,
+    description,
+  }: ICreateCategoryDTO): Promise<Category> {
+    if (!code) {
+      throw new AppError('The code cannot be empty');
     }
 
-    const category = await this.categoryRepository.putCategory({
-      category_id,
-      name,
+    if (!description) {
+      throw new AppError('The description cannot be empty');
+    }
+
+    if (code.length !== 4) {
+      throw new AppError('The code be have a four chars');
+    }
+
+    const checkDescriptionExists = await this.categoryRepository.findByDescription(
+      description,
+    );
+
+    if (checkDescriptionExists) {
+      throw new AppError('This category description already exists');
+    }
+
+    const category = await this.categoryRepository.update({
+      code,
+      description,
     });
+
+    if (!category) {
+      throw new AppError('This category code not exists');
+    }
 
     return category;
   }
 }
 
-export default putSkuService;
+export default UpdateCategoryService;

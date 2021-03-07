@@ -1,28 +1,47 @@
 import { injectable, inject } from 'tsyringe';
 
+import AppError from '../../../../shared/errors/AppError';
+
 import Category from '../../infra/typeorm/entities/Category';
 import ICategoryRepository from '../../repositories/ICategoryRepository';
 
 interface IRequest {
-  category_id: string;
+  code?: string;
+  description?: string;
 }
 
+type IResponse = Category | Category[] | undefined;
+
 @injectable()
-class GetCategoryService {
+class FindCategoryService {
   constructor(
     @inject('CategoryRepository')
     private categoryRepository: ICategoryRepository,
   ) {}
 
-  public async execute({
-    category_id,
-  }: IRequest): Promise<Category | undefined> {
-    const category = await this.categoryRepository.findCategoryById(
-      category_id,
-    );
+  public async execute(request: IRequest): Promise<IResponse> {
+    const { code, description } = request;
 
-    return category;
+    if (!code && !description) {
+      return this.categoryRepository.find();
+    }
+
+    if (code && description) {
+      throw new AppError(
+        'Only one parameter must be informed code or description',
+      );
+    }
+
+    if (code) {
+      return this.categoryRepository.findByCode(code);
+    }
+
+    if (description) {
+      return this.categoryRepository.findByDescription(description);
+    }
+
+    return [];
   }
 }
 
-export default GetCategoryService;
+export default FindCategoryService;
