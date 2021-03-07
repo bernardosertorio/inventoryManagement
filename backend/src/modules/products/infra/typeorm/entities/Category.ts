@@ -1,21 +1,23 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Unique,
+  PrimaryColumn,
 } from 'typeorm';
 
 @Entity('categories')
+@Unique(['code', 'description'])
 class Category {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryColumn({
+    length: 4,
+    type: 'text',
+  })
+  code: string;
 
   @Column()
-  name: string;
-
-  @Column()
-  availability: boolean;
+  description: string;
 
   @CreateDateColumn()
   created_at: Date;
