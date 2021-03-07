@@ -1,17 +1,11 @@
-import IFindAllProductsInCategoryDTO from '../dtos/Product/IFindAllProductsInCategoryDTO';
-import ICreateProductDTO from '../dtos/ICreateProductDTO';
-import IPutProductDTO from '../dtos/IPutProductDTO';
-import IDeleteProductDTO from '../dtos/IDeleteProductDTO';
-
 import Product from '../infra/typeorm/entities/Product';
+import ICreateProductDTO from '../dtos/ICreateProductDTO';
+import IUpdateProductDTO from '../dtos/IUpdateProductDTO';
 
-export default interface IProductRepository {
-  createProduct(data: ICreateProductDTO): Promise<Product>;
-  getProductById(product_id: string): Promise<Product | undefined>;
-  findAllProductsInCategory(
-    category_id: IFindAllProductsInCategoryDTO,
-  ): Promise<Product[]>;
-  getProductByTitle(title: string): Promise<Product | undefined>;
-  editProduct(data: IPutProductDTO): Promise<Product | undefined>;
-  deleteProduct(data: IDeleteProductDTO): Promise<void>;
+export default interface IProductsRepository {
+  create(data: ICreateProductDTO): Promise<Product>;
+  find(): Promise<Product[]>;
+  findBySku(sku: string): Promise<Product | undefined>;
+  delete(code: string): Promise<void>;
+  update(data: IUpdateProductDTO): Promise<Product | undefined>;
 }
