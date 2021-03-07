@@ -1,8 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import ICategoryRepository from '../../../repositories/ICategoryRepository';
-import ICreateCategoryDTO from '../../../dtos/Category/ICreateCategoryDTO';
-import IPutCategoryDTO from '../../../dtos/Category/IPutCategoryDTO';
+import ICreateCategoryDTO from '../../../dtos/ICreateCategoryDTO';
 
 import Category from '../entities/Category';
 
@@ -13,46 +12,55 @@ class CategoryRepository implements ICategoryRepository {
     this.ormRepository = getRepository(Category);
   }
 
-  public async findCategoryByName(name: string): Promise<Category | undefined> {
-    const findCategory = await this.ormRepository.findOne({
-      where: { name },
-    });
-
-    return findCategory;
-  }
-
-  public async findCategoryById(id: string): Promise<Category | undefined> {
-    const category = await this.ormRepository.findOne(id);
-
-    return category;
-  }
-
-  public async putCategory({
-    name,
-    category_id,
-  }: IPutCategoryDTO): Promise<Category> {
-    return this.ormRepository.save({
-      id: category_id,
-      name,
-    });
-  }
-
-  public async createCategory({
-    name,
-    availability,
+  public async create({
+    code,
+    description,
   }: ICreateCategoryDTO): Promise<Category> {
-    const category = this.ormRepository.create({
-      name,
-      availability,
-    });
+    const category = this.ormRepository.create({ code, description });
 
     await this.ormRepository.save(category);
 
     return category;
   }
 
-  public async deleteCategory(category_id: string): Promise<void> {
-    await this.ormRepository.delete(category_id);
+  public async findByCode(code: string): Promise<Category | undefined> {
+    const category = await this.ormRepository.findOne(code);
+
+    return category;
+  }
+
+  public async findByDescription(
+    description: string,
+  ): Promise<Category | undefined> {
+    const category = await this.ormRepository.findOne({
+      where: { description },
+    });
+
+    return category;
+  }
+
+  public async find(): Promise<Category[]> {
+    const categories = await this.ormRepository.find();
+
+    return categories;
+  }
+
+  public async delete(code: string): Promise<void> {
+    await this.ormRepository.delete(code);
+  }
+
+  public async update({
+    code,
+    description,
+  }: ICreateCategoryDTO): Promise<Category | undefined> {
+    const category = await this.ormRepository.findOne(code);
+
+    if (category) {
+      category.description = description;
+      await this.ormRepository.save(category);
+    }
+
+    return category;
   }
 }
 
