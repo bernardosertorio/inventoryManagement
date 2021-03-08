@@ -12,7 +12,6 @@ import {
 class Category {
   @PrimaryColumn({
     length: 4,
-    type: 'text',
   })
   code: string;
 

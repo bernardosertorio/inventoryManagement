@@ -18,7 +18,6 @@ import Size from './Size';
 class Product {
   @PrimaryColumn({
     length: 16,
-    type: 'text',
   })
   sku: string;
 
